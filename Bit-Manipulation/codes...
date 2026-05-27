@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class BitManipulation {
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int number = numberInput();
+        int position = positionInput();
+        boolean data = getMask(number, position);
+        if (data) {
+            System.out.println("The number is 1");
+        } else {
+            System.out.println("The number is 0");
+        }
+        System.out.println();
+        setMask(number, position);
+        System.out.println();
+        clearMask(number, position);
+        System.out.println();
+        updateMask(number, position);
+        sc.close();
+    }
+
+    public static boolean getMask(int num, int pos) {
+        int mask = 1 << pos;
+        System.out.println("Get Mask Operation");
+        if ((mask & num) == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static void setMask(int num, int pos) {
+        int mask = 1 << pos;
+        System.out.println("Set Mask Operation");
+        int newNum = num | mask;
+        System.out.println("After setting the number at position " + pos + " the number becomes " + newNum);
+    }
+
+    public static void clearMask(int num, int pos) {
+        int mask = ~(1 << pos);
+        int newNum = num & mask;
+        System.out.println("After clearing the number at position " + pos + " the number becomes " + newNum);
+
+    }
+
+    public static void updateMask(int num, int pos) {
+        int mask = 1 << pos;
+        System.out.println("Update Mask Operation");
+        System.out.println("Enter if you want to update to 1 or 0");
+        int update = sc.nextInt();
+        if (update == 1) {
+            int newNum = num | mask;
+            System.out.println("After updating the number at position " + pos + " the number becomes " + newNum);
+        } else {
+            int newMask = ~mask;
+            int newNum = num & newMask;
+            System.out.println("After updating the number at position " + pos + " the number becomes " + newNum);
+        }
+    }
+
+    public static int numberInput() {
+        System.out.println("Enter the Number:");
+        return sc.nextInt();
+
+    }
+
+    public static int positionInput() {
+
+        System.out.println("Enter the Position:");
+        return sc.nextInt();
+    }
+
+}
