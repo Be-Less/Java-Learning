@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+//Determining if a string is Palindrome or not using both ways
+
+public class PallinDrome {
+    public static void main(String[] args) {
+        String naam = nameInput();
+        withoutStringBuilder(naam);
+        withStringBuilder(naam);
+    }
+
+    public static String nameInput() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a String:");
+        String name = sc.nextLine();
+        return name;
+    }
+
+    public static void withStringBuilder(String name) {
+
+        System.out.println("-----------------------------");
+        System.out.println("| Done using String Builder |");
+        System.out.println("-----------------------------");
+
+        String newName = name.toUpperCase();
+        System.out.println("You Provided " + name + ". We converted it to " + newName);
+        StringBuilder sb = new StringBuilder(newName);
+        String nayaName = sb.reverse().toString();
+        System.out.println("The reverse is " + nayaName);
+        if (newName.compareTo(nayaName) == 0) {
+            System.out.println("Since " + newName + " when reversed becomes " + nayaName
+                    + ".\nThe string you provided is a Palindrome String.");
+        } else {
+            System.out.println("Since " + newName + " when reversed becomes " + nayaName
+                    + ".\nThe string you provided is not a Palindrome String.");
+        }
+    }
+
+    public static void withoutStringBuilder(String name) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("-------------------------------------");
+        System.out.println("| Done without using String Builder |");
+        System.out.println("-------------------------------------");
+
+        String newName = name.toUpperCase();
+        System.out.println("You Provided " + name + ". We converted it to " + newName);
+        // Reversing String without using string builder.
+        String reverse = "";
+        for (int i = newName.length() - 1; i >= 0; i--) {
+            reverse += newName.charAt(i);
+        }
+        System.out.println("The reverse is " + reverse);
+        if (newName.compareTo(reverse) == 0) {
+            System.out.println("Since " + newName + " when reversed becomes " + reverse
+                    + ".\nThe string you provided is a Palindrome String.");
+        } else {
+            System.out.println("Since " + newName + " when reversed becomes " + reverse
+                    + ".\nThe string you provided is not a Palindrome String.");
+        }
+    }
+}
