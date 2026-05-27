@@ -18,7 +18,7 @@ public class TwoDimensionalArrays {
                 numbers[i][j] = sc.nextInt();
             }
         }
-
+        boolean found = false;
         System.out.println("Enter which number's position you want to know?");
         int x = sc.nextInt();
         System.out.println();
@@ -26,8 +26,14 @@ public class TwoDimensionalArrays {
             for (int j = 0; j < cols; j++) {
                 if (x == numbers[i][j]) {
                     System.out.println("Your number is in " + (i + 1) + " ╳ " + (j + 1));
+                    found = true;
                 }
             }
         }
+        if(!found)
+        {
+            System.out.println("Number not found!!!");
+        }
+        sc.close();
     }
 }
