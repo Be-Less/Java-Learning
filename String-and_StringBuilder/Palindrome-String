@@ -37,7 +37,6 @@ public class PallinDrome {
     }
 
     public static void withoutStringBuilder(String name) {
-        Scanner sc = new Scanner(System.in);
         System.out.println("-------------------------------------");
         System.out.println("| Done without using String Builder |");
         System.out.println("-------------------------------------");
