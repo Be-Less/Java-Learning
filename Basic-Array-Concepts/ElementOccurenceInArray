@@ -1,0 +1,41 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Occurence {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("---------------------");
+        System.out.println("| Element Occurence |");
+        System.out.println("---------------------");
+        System.out.print("Enter the length of array: ");
+        int len = sc.nextInt();
+
+        int[] arr = new int[len];
+        System.out.println("|Enter the elements of Array|");
+        for (int i =0; i<len;i++){
+            System.out.print("Element {"+(i+1)+"}: ");
+            arr[i] = sc.nextInt();
+        }
+        System.out.println();
+        System.out.println("The Array that you provided is:");
+        System.out.println(Arrays.toString(arr));
+        System.out.print("Enter the element whose occurence you want to know: ");
+        int n = sc.nextInt();
+//        int[] arr = {1,2,3,4,4,5,4};
+//        int n = 9;
+        int increment = 0;
+        boolean say = false;
+        for (int i =0;i<arr.length;i++){
+            if(n==arr[i]){
+                increment++;
+                say = true;
+            }
+        }
+        if (say){
+        System.out.println("The element had occured for "+increment+" times.");
+        }
+        else {
+            System.out.println("The Element is not available.");
+        }
+    }
+}
