@@ -1,0 +1,45 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ArraySum {
+   static Scanner sc = new Scanner(System.in);
+   public static void main(String[] args) {
+       System.out.println("------------------------------");
+       System.out.println("| Array Addition And Average |");
+       System.out.println("------------------------------");
+       int n = arrayLen();
+        int[] arr = arrayInput(n);
+      System.out.println("The provided array is "+ Arrays.toString(arr));
+
+       System.out.println();
+        int sum = sumArray(arr);
+       System.out.println("The Sum of the elements of Array = "+sum);
+       int avg = sum/n;
+       System.out.println("The average of the elements of Array = "+avg);
+    }
+    public static int sumArray(int[] arr){
+        int i =0;
+        int temp=0;
+        while(i< arr.length){
+            temp+=arr[i];
+            i++;
+        }
+        return temp;
+    }
+    public static int arrayLen(){
+        System.out.println("Enter the number of elements in an array:");
+        return sc.nextInt();
+
+    }
+    public static int[] arrayInput(int n){
+       int[] arr = new int[n];
+       int i =0;
+       while(i<n){
+           System.out.print("Enter Element no. "+(i+1)+" : " );
+           arr[i]=sc.nextInt();
+           i++;
+       }
+       return arr;
+    }
+
+}
