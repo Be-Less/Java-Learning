@@ -1,0 +1,46 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class DeleteElementArray {
+    static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        System.out.println("-----------------------------");
+        System.out.println("| Delete Element from Array |");
+        System.out.println("-----------------------------");
+        System.out.print("Enter the Length of Array: ");
+        int length = takeInput();
+        int[] arr= takeArray(length);
+        System.out.print("Enter the Element of Array you want to remove: ");
+        int remove = takeInput();
+        int index = 0;
+        int count=0;
+        for(int num : arr){
+            if(num==remove){
+                count++;
+            }
+        }
+        int[] newArr = new int[arr.length-count];
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]!=remove){
+                newArr[index]= arr[i];
+                index++;
+            }
+        }
+        System.out.println("Before removing "+remove+" your Array is: ");
+        System.out.println(Arrays.toString(arr));
+        System.out.println("After removing "+remove+" your Array becomes: ");
+        System.out.println(Arrays.toString(newArr));
+    }
+    public static int[] takeArray(int n){
+        int[] arr = new int[n];
+        for (int i =0;i<n;i++){
+            System.out.print("Element {"+(i+1)+"}: ");
+            arr[i]=sc.nextInt();
+        }
+        return arr;
+    }
+    public static int takeInput(){
+
+        return sc.nextInt();
+    }
+}
