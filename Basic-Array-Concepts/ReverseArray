@@ -1,0 +1,39 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ReverseArray {
+    static Scanner sc = new Scanner(System.in);
+   public static void main(String[] args) {
+       System.out.println("-------------------");
+       System.out.println("| Reversing Array |");
+       System.out.println("-------------------");
+       System.out.print("Enter the length of Array: ");
+       int length = takeInput();
+        int[] arr = takeArray(length);
+        int n = arr.length-1;
+       System.out.println("|Original Array|");
+       System.out.println(Arrays.toString(arr));
+       System.out.println("|Reversed Array|");
+        reverseArr(arr,n);
+    }
+    public static void reverseArr(int[] arr, int n){
+        for(int i=0;i<arr.length/2;i++){
+            int temp = arr[n-i];
+            arr[n-i]=arr[i];
+            arr[i]=temp;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+    public static int[] takeArray(int n){
+        int[] arr = new int[n];
+        for (int i =0;i<n;i++){
+            System.out.print("Element {"+(i+1)+"}: ");
+            arr[i]=sc.nextInt();
+        }
+        return arr;
+    }
+    public static int takeInput(){
+
+        return sc.nextInt();
+    }
+}
