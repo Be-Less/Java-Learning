@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+class Game {
+    private int randomNum;
+    private int userNum;
+    private int noOfGuesses;
+
+    Game() {
+        randomNum = (int)(Math.random() * 100) + 1;
+        noOfGuesses = 0;
+    }
+
+    public void takeUserInput() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your guess: ");
+        userNum = sc.nextInt();
+        noOfGuesses++;
+    }
+
+    public boolean isCorrectNumber() {
+        if (userNum == randomNum) {
+            return true;
+        } else if (userNum < randomNum) {
+            System.out.println("Too low! Try a bigger number.");
+        } else {
+            System.out.println("Too high! Try a smaller number.");
+        }
+        return false;
+    }
+
+    public int getNoOfGuesses() {
+        return noOfGuesses;
+    }
+
+    public void setNoOfGuesses(int noOfGuesses) {
+        this.noOfGuesses = noOfGuesses;
+    }
+}
+
+public class Exercise3 {
+    public static void main(String[] args) {
+        Game g = new Game();
+
+        System.out.println("=== Guess The Number Game ===");
+        System.out.println("I have chosen a number between 1 and 100.");
+
+        while (!g.isCorrectNumber()) {
+            g.takeUserInput();
+        }
+
+        System.out.println("Congratulations! You guessed the number.");
+        System.out.println("Number of guesses: " + g.getNoOfGuesses());
+    }
+}
