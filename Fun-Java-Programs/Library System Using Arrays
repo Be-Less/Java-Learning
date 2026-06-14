@@ -1,0 +1,120 @@
+import java.util.Scanner;
+
+class Store {
+    private String[] books;
+    private int noOfBooks;
+
+    Store() {
+        books = new String[100];
+        noOfBooks = 0;
+    }
+
+    void addBook(String book) {
+        if (noOfBooks >= books.length) {
+            System.out.println("Library is full.");
+            return;
+        }
+
+        books[noOfBooks] = book;
+        noOfBooks++;
+
+        System.out.println(book + " has been added.");
+    }
+
+    void showAvailableBooks() {
+        if (noOfBooks == 0) {
+            System.out.println("No books available.");
+            return;
+        }
+
+        System.out.println("\nAvailable Books:");
+
+        for (int i = 0; i < noOfBooks; i++) {
+            System.out.println((i + 1) + ". " + books[i]);
+        }
+    }
+
+    void issueBook(String book) {
+        for (int i = 0; i < noOfBooks; i++) {
+
+            if (books[i].equalsIgnoreCase(book)) {
+
+                // Shift all elements to the left
+                for (int j = i; j < noOfBooks - 1; j++) {
+                    books[j] = books[j + 1];
+                }
+
+                books[noOfBooks - 1] = null;
+                noOfBooks--;
+
+                System.out.println(book + " has been issued.");
+                return;
+            }
+        }
+
+        System.out.println("Book not found.");
+    }
+
+    void returnBook(String book) {
+        addBook(book);
+        System.out.println(book + " has been returned.");
+    }
+}
+
+public class Library {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        Store lib = new Store();
+
+        int choice;
+
+        do {
+            System.out.println("\n===== LIBRARY MENU =====");
+            System.out.println("1. Add Book");
+            System.out.println("2. Show Available Books");
+            System.out.println("3. Issue Book");
+            System.out.println("4. Return Book");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+
+            choice = sc.nextInt();
+            sc.nextLine(); // consume newline
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("Enter book name: ");
+                    String bookToAdd = sc.nextLine();
+                    lib.addBook(bookToAdd);
+                    break;
+
+                case 2:
+                    lib.showAvailableBooks();
+                    break;
+
+                case 3:
+                    System.out.print("Enter book name to issue: ");
+                    String bookToIssue = sc.nextLine();
+                    lib.issueBook(bookToIssue);
+                    break;
+
+                case 4:
+                    System.out.print("Enter book name to return: ");
+                    String bookToReturn = sc.nextLine();
+                    lib.returnBook(bookToReturn);
+                    break;
+
+                case 5:
+                    System.out.println("Thank you for using the Library System.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+
+        } while (choice != 5);
+
+        sc.close();
+    }
+}
